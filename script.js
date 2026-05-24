@@ -65,3 +65,22 @@ function displayWeather(data) {
     <p>☁ Condition: ${condition}</p>
   `;
 }
+
+function getForecast(city) {
+
+  const url =
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+
+      console.log("FORECAST:", data);
+
+      displayForecast(data);
+
+    })
+    .catch(error => {
+      console.log("Forecast error:", error);
+    });
+}
