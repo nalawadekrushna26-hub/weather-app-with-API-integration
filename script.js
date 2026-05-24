@@ -221,3 +221,13 @@ function getWeather() {
 
     });
 }
+
+let timeout;
+
+function getWeather() {
+  clearTimeout(timeout);
+
+  timeout = setTimeout(() => {
+    fetchWeather();
+  }, 500);
+}
