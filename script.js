@@ -231,3 +231,17 @@ function getWeather() {
     fetchWeather();
   }, 500);
 }
+
+function fetchWeather() {
+  const city = document.getElementById("city").value;
+
+  if (!city) return;
+
+  const url =
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => displayWeather(data))
+    .catch(err => console.log(err));
+}
