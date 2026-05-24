@@ -84,3 +84,26 @@ function getForecast(city) {
       console.log("Forecast error:", error);
     });
 }
+
+function displayForecast(data) {
+
+  const forecastDiv = document.getElementById("forecast");
+
+  // filter only 12:00 PM data (1 per day)
+  const dailyData = data.list.filter(item =>
+    item.dt_txt.includes("12:00:00")
+  );
+
+  forecastDiv.innerHTML = "<h3>5-Day Forecast</h3>";
+
+  dailyData.map(day => {
+
+    forecastDiv.innerHTML += `
+      <div class="forecast-card">
+        <p>📅 ${day.dt_txt.split(" ")[0]}</p>
+        <p>🌡 Temp: ${day.main.temp} °C</p>
+        <p>☁ ${day.weather[0].description}</p>
+      </div>
+    `;
+  });
+}
