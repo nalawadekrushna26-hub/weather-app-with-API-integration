@@ -137,3 +137,25 @@ function getLocationWeather() {
     alert("Geolocation not supported by your browser");
   }
 }
+function success(position) {
+
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+
+  console.log("Latitude:", lat);
+  console.log("Longitude:", lon);
+
+  const url =
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+
+      console.log("LOCATION WEATHER:", data);
+
+      displayWeather(data);
+
+    })
+    .catch(err => console.log(err));
+}
