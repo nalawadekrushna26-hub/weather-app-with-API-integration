@@ -126,3 +126,14 @@ function getWeather() {
 
     });
 }
+
+function getLocationWeather() {
+
+  if (navigator.geolocation) {
+
+    navigator.geolocation.getCurrentPosition(success, error);
+
+  } else {
+    alert("Geolocation not supported by your browser");
+  }
+}
