@@ -166,7 +166,7 @@ function error() {
 
 displayWeather(data);
 
-const apiKey = "YOUR_API_KEY";
+const apiKey = "cf61723150b20c21ea3fc1f544c4cac2";
 
 //  MAIN FUNCTION
 function getWeather() {
