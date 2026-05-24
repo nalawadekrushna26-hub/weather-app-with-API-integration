@@ -121,3 +121,16 @@ body {
         gap: 8px;
     }
 }
+
+#weather {
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  display: inline-block;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+h2 {
+  margin-bottom: 10px;
+}
