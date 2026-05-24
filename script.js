@@ -48,3 +48,20 @@ function getWeather() {
       console.log("Error:", error);
     });
 }
+
+function displayWeather(data) {
+
+  const weatherDiv = document.getElementById("weather");
+
+  const temp = data.main.temp;
+  const humidity = data.main.humidity;
+  const condition = data.weather[0].description;
+  const cityName = data.name;
+
+  weatherDiv.innerHTML = `
+    <h2>${cityName}</h2>
+    <p>🌡 Temperature: ${temp} °C</p>
+    <p>💧 Humidity: ${humidity}%</p>
+    <p>☁ Condition: ${condition}</p>
+  `;
+}
