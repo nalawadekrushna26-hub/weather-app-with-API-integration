@@ -162,3 +162,10 @@ h2 {
   color: red;
   font-weight: bold;
 }
+
+@media (max-width: 600px) {
+  input, button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
