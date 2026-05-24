@@ -246,4 +246,4 @@ function fetchWeather() {
     .catch(err => console.log(err));
 }
 const weatherDiv = document.getElementById("weather");
-weatherDiv.innerHTML = ...
+weatherDiv.innerHTML = "loading..."
