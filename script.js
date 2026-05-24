@@ -60,9 +60,9 @@ function displayWeather(data) {
 
   weatherDiv.innerHTML = `
     <h2>${cityName}</h2>
-    <p>🌡 Temperature: ${temp} °C</p>
-    <p>💧 Humidity: ${humidity}%</p>
-    <p>☁ Condition: ${condition}</p>
+    <p> Temperature: ${temp} °C</p>
+    <p> Humidity: ${humidity}%</p>
+    <p> Condition: ${condition}</p>
   `;
 }
 
@@ -100,9 +100,9 @@ function displayForecast(data) {
 
     forecastDiv.innerHTML += `
       <div class="forecast-card">
-        <p>📅 ${day.dt_txt.split(" ")[0]}</p>
-        <p>🌡 Temp: ${day.main.temp} °C</p>
-        <p>☁ ${day.weather[0].description}</p>
+        <p> ${day.dt_txt.split(" ")[0]}</p>
+        <p> Temp: ${day.main.temp} °C</p>
+        <p> ${day.weather[0].description}</p>
       </div>
     `;
   });
@@ -121,7 +121,7 @@ function getWeather() {
 
       displayWeather(data);
 
-      // 👉 ADD THIS LINE
+      // ADD THIS LINE
       getForecast(city);
 
     });
@@ -161,7 +161,63 @@ function success(position) {
 }
 
 function error() {
-  alert("Unable to get your location ❌");
+  alert("Unable to get your location ");
 }
 
 displayWeather(data);
+
+const apiKey = "YOUR_API_KEY";
+
+//  MAIN FUNCTION
+function getWeather() {
+
+  const city = document.getElementById("city").value;
+
+  const weatherDiv = document.getElementById("weather");
+  const errorDiv = document.getElementById("error");
+  const loadingDiv = document.getElementById("loading");
+
+  // reset UI
+  errorDiv.innerHTML = "";
+  weatherDiv.innerHTML = "";
+
+  if (city === "") {
+    errorDiv.innerHTML = " Please enter a city name";
+    return;
+  }
+
+  // show loading
+  loadingDiv.style.display = "block";
+
+  const url =
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+
+      loadingDiv.style.display = "none";
+
+      //  API error handling
+      if (data.cod !== 200) {
+        errorDiv.innerHTML = " City not found or API error!";
+        return;
+      }
+
+      //  show weather
+      weatherDiv.innerHTML = `
+        <h2>${data.name}</h2>
+        <p> Temp: ${data.main.temp} °C</p>
+        <p> Humidity: ${data.main.humidity}%</p>
+        <p> Condition: ${data.weather[0].description}</p>
+      `;
+
+    })
+    .catch(error => {
+
+      loadingDiv.style.display = "none";
+      errorDiv.innerHTML = " Network error! Try again.";
+      console.log(error);
+
+    });
+}
