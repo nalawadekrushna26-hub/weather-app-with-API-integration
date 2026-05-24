@@ -150,3 +150,15 @@ h2 {
   width: 120px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
+
+#loading {
+  margin-top: 10px;
+  font-weight: bold;
+  color: blue;
+}
+
+#error {
+  margin-top: 10px;
+  color: red;
+  font-weight: bold;
+}
