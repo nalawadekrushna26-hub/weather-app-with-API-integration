@@ -134,3 +134,19 @@ body {
 h2 {
   margin-bottom: 10px;
 }
+
+#forecast {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.forecast-card {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  width: 120px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
