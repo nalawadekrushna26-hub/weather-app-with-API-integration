@@ -163,3 +163,5 @@ function success(position) {
 function error() {
   alert("Unable to get your location ❌");
 }
+
+displayWeather(data);
