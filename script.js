@@ -159,3 +159,7 @@ function success(position) {
     })
     .catch(err => console.log(err));
 }
+
+function error() {
+  alert("Unable to get your location ❌");
+}
