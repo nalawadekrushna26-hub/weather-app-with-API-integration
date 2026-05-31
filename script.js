@@ -252,4 +252,5 @@ if(city.trim() === ""){
     alert("Please enter a city name");
     return;
 }
-document.getElementById("weather").innerHTML = "...";
+const weatherDiv = document.getElementById("weather");
+weatherDiv.innerHTML = "...";
