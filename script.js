@@ -247,3 +247,8 @@ function fetchWeather() {
 }
 const weatherDiv = document.getElementById("weather");
 weatherDiv.innerHTML = "loading..."
+
+if(city.trim() === ""){
+    alert("Please enter a city name");
+    return;
+}
