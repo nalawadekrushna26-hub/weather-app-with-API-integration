@@ -259,22 +259,35 @@ loading.style.display = "none";
 
 
 
-fetch(url)
-  .then(res => res.json())
-  .then(data => {
+function getWeather() {
 
-      loading.style.display = "none";
+    const city = document.getElementById("city").value;
 
-      displayWeather(data);
+    const loading = document.getElementById("loading");
+    const errorDiv = document.getElementById("error");
 
-  })
-  .catch(error => {
+    loading.style.display = "block";
 
-      loading.style.display = "none";
+    const url =
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-      errorDiv.innerHTML =
-      "Unable to fetch weather data. Please try again.";
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
 
-      console.error(error);
+          loading.style.display = "none";
 
-  });
+          displayWeather(data);
+
+      })
+      .catch(error => {
+
+          loading.style.display = "none";
+
+          errorDiv.innerHTML =
+          "Unable to fetch weather data. Please try again.";
+
+          console.error(error);
+
+      });
+}
