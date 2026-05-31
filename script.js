@@ -256,3 +256,25 @@ const weatherDiv = document.getElementById("weather");
 weatherDiv.innerHTML = "...";
 loading.style.display = "block";
 loading.style.display = "none";
+
+
+
+fetch(url)
+  .then(res => res.json())
+  .then(data => {
+
+      loading.style.display = "none";
+
+      displayWeather(data);
+
+  })
+  .catch(error => {
+
+      loading.style.display = "none";
+
+      errorDiv.innerHTML =
+      "Unable to fetch weather data. Please try again.";
+
+      console.error(error);
+
+  });
