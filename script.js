@@ -254,3 +254,4 @@ if(city.trim() === ""){
 }
 const weatherDiv = document.getElementById("weather");
 weatherDiv.innerHTML = "...";
+loading.style.display = "block";
